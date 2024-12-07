@@ -3,10 +3,17 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://127.0.0.1:4200',
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  allowedHeaders: 'Content-Type,Authorization'
+};
 
+require('dotenv').config();
 const process = require('process');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 const m4App = express();
 
 process.once('warning', (warning) => {
@@ -16,9 +23,9 @@ process.once('warning', (warning) => {
 require('./server/config/m4Database');
 
 m4App
-  // .use(cors())
-  .use(bodyParser.urlencoded({ extended: true }))
+  .use(cors(corsOptions))
   .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname,'dist','mean-419')))
   .use(cookieParser("TheBigSecret369"))
   .use(session({

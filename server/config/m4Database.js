@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
+// const mongoURI = 'mongodb://localhost:27017/m-4';
 const mongoURI = 'mongodb://127.0.0.1:27017/m-4';
 
 const modelsPath = path.join(__dirname, '../models');

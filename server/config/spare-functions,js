@@ -1,0 +1,105 @@
+const { Http } = require('@status/codes');
+const Admin = require('mongoose').model('Admin');
+
+const mongoose = require('mongoose');
+
+const path = require('path');
+const crypto = require('crypto');
+const multer = require('multer');
+const { GridFsStorage } = require('multer-gridfs-storage');
+const mongoURI = 'mongodb://127.0.0.1:27017/m-4';
+
+// add ons
+const Grid = require('gridfs-stream');
+let gfs;
+let gfsT;
+const process = require('process');
+
+
+const imageFilter = function(req, file, cb) {
+  if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+    req.fileValidationError = 'Only image files are allowed for uploads! ';
+    return cb(new Error('Only image files are allowed for uploads! ', false));
+  }
+  cb(null, true);
+};
+
+const storage = new GridFsStorage({
+  url: mongoURI,
+  options: { useNewUrlParser: true, useUnifiedTopology: true },
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+
+let connect = mongoose.createConnection(mongoURI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+
+mongoose.connection.once('connected', () => {
+  gfs = Grid(mongoose.connection.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+
+connect.once('open', () => {
+  gfsT = new mongoose.mongo.GridFSBucket(connect.db, {bucketName: 'uploads'});
+});
+module.exports = {
+  showImage(request, response) {
+      const { admin_id: adminId } = request.params;
+      Admin.findOne({_id: adminId})
+      .then(adminInfo => {
+        if (!adminInfo) {
+          return response.status(404).json(`No Administrator was found... ${adminInfo}`);
+        }
+        gfs.files.find({ _id: adminInfo.profilePicture })
+          .toArray((err, files) => {
+            if (!files) {
+              return response.status(404).json(err);
+            }
+          })
+          .then(newFiles => {
+            return gfsT.openDownloadStreamByName(newFiles[0].filename).pipe(response);
+          })
+          .catch(error => response.status(Http.NotFound).json(error));
+      })
+      .catch(error => response.status(Http.NotFound).json(error));
+  },
+  destroy(request, response) {
+    const { admin_id: adminId } = request.params;
+    Admin.findByIdAndRemove(adminId)
+      .then(reviewApp => {
+        if (!reviewApp) {
+          return response.status(404).json(`Review with the id: ${adminId} was not found...`);
+        }
+        gfs.files.find({ _id: reviewApp.profilePicture }).toArray((err, files) => {
+          if (err) {
+            return response.status(500).json({ message: 'Error retrieving files from GridFS.', error: err });
+          }
+        })
+        .then(newFiles => {
+          gfsT.delete(reviewApp.profilePicture, (err, file) => {
+            if (err) {
+              return response.status(Http.Conflict.json(err));
+            }
+          })
+          console.log('destroy',newFiles);
+          response.json(reviewApp);
+        })
+      })
+      .catch(error => response.status(Http.Conflict).json(error));
+  }
+}
