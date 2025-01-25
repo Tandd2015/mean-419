@@ -14,6 +14,8 @@ const corsOptions = {
 require('dotenv').config();
 const process = require('process');
 const port = process.env.PORT || 5000;
+const cookieKey = process.env.COOKIE_PARSER_SECRET_KEY;
+const sessionKey = process.env.SESSION_SECRET_KEY;
 const m4App = express();
 
 process.once('warning', (warning) => {
@@ -27,10 +29,10 @@ m4App
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(express.static(path.join(__dirname,'dist','mean-419')))
-  .use(cookieParser("TheBigSecret369"))
+  .use(cookieParser(cookieKey))
   .use(session({
     saveUninitialized: true,
-    secret: "369TheSecondBigSecret",
+    secret: sessionKey,
     resave: false,
     name: "session",
     rolling: true,
