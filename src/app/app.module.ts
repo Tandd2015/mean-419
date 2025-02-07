@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import * as fromFooter from './footer';
 import { SlideShowComponent } from './slide-show/slide-show.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UserCookieComponent } from './user-cookie/user-cookie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ...fromFooter.components,
-    SlideShowComponent
+    SlideShowComponent,
+    NotFoundComponent,
+    UserCookieComponent
   ],
   imports: [
     BrowserModule,
