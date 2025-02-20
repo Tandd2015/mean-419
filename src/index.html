@@ -20,44 +20,45 @@
         // Request needed libraries.
         const { Map, InfoWindow } = await google.maps.importLibrary("maps");
         const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+        window.onload = function() {
+          // The map, centered at 419 Paint & Body LLC
+          map = new Map(document.getElementById("map"), {
+            zoom: 12,
+            center: position,
+            mapId: "map",
+          });
 
-        // The map, centered at 419 Paint & Body LLC
-        map = new Map(document.getElementById("map"), {
-          zoom: 12,
-          center: position,
-          mapId: "map",
-        });
+          // Create an info window to share between markers.
+          const infoWindow = new InfoWindow();
 
-        // Create an info window to share between markers.
-        const infoWindow = new InfoWindow();
+          // Create pin element for the marker and customizing the pin element
+          const pin = new PinElement({
+            glyph: "419 Paint & Body LLC",
+            borderColor: "black",
+            background: "red",
+            glyphColor: "black",
+            scale: 1,
+          });
 
-        // Create pin element for the marker and customizing the pin element
-        const pin = new PinElement({
-          glyph: "419 Paint & Body LLC",
-          borderColor: "black",
-          background: "red",
-          glyphColor: "black",
-          scale: 1,
-        });
+          // The marker, positioned at 419 Paint & Body LLC, made clickable
+          const marker = new AdvancedMarkerElement({
+            map: map,
+            position: position,
+            title: "Phone: 1-419-596-3558, Address: 4217 Rd 19, Continental, OH 45831",
+            content: pin.element,
+            gmpClickable: true,
+          });
 
-        // The marker, positioned at 419 Paint & Body LLC, made clickable
-        const marker = new AdvancedMarkerElement({
-          map: map,
-          position: position,
-          title: "Phone: 1-419-596-3558, Address: 4217 Rd 19, Continental, OH 45831",
-          content: pin.element,
-          gmpClickable: true,
-        });
+          // Added a click event listener to the marker, opening and closing the info window
+          marker.addListener("click", ({ domEvent, latLng }) => {
+            const { target } = domEvent;
 
-        // Added a click event listener to the marker, opening and closing the info window
-        marker.addListener("click", ({ domEvent, latLng }) => {
-          const { target } = domEvent;
-
-          infoWindow.close();
-          infoWindow.setContent(marker.title);
-          infoWindow.open(marker.map, marker);
-        });
-      }
+            infoWindow.close();
+            infoWindow.setContent(marker.title);
+            infoWindow.open(marker.map, marker);
+          });
+        };
+      };
       // dynamically creating the Google API
       async function loadGoogleMapsAPI() {
         const response = await fetch('api/home/apiRoutes');
