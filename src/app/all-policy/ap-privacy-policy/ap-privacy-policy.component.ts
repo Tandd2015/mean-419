@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-ap-privacy-policy',
   templateUrl: './ap-privacy-policy.component.html',
@@ -13,10 +12,21 @@ export class ApPrivacyPolicyComponent {
   public effectiveReviewDateCaliPrivacy: string = '02-11-2025';
   public effectiveDateCaliPrivacy: string = '02-11-2025';
   public emailPrivacy: string = '@gmail.com';
-  public phonePrivacy: string = '1-419-596-3558';
-  public phoneDisplayPrivacy: string = '1-419-596-3558';
+  public phonePrivacy: string = '1-419-789-8088';
+  public phoneDisplayPrivacy: string = '1-419-789-8088';
   public mainAddress1Privacy: string ='4217 Rd 19';
   public mainAddress2Privacy: string ='Continental, OH, 45831';
-  constructor() { };
+
+  public activeRoutePrivacy: string = '';
+  public routerEventsPrivacy: any;
+  public idArrayPrivacy: string[] = ["policyPrivacy", "definitionsPrivacy", "protectionPrivacy", "userDataPrivacy", "companyPrivacy", "companyUsePrivacy", "WhoPrivacy", "protocolsPrivacy", "childrenPrivacy", "contactPrivacy", "CaliforniaUserPrivacy", "EuropeanUserPrivacy", "modificationPrivacy", "disclosuresPrivacy", "datePrivacy"];
+
+  constructor() {};
+
+  public toPrivacy(navClick: Event, id: string): void {
+    navClick.preventDefault();
+    document.getElementById(`${id}`)?.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  };
+
 }
-// footer and here
+

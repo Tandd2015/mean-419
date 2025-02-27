@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import * as fromPolicy from './all-policy';
 import * as fromFooter from './footer';
+
 import { SlideShowComponent } from './slide-show/slide-show.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotFoundComponent } from './not-found/not-found.component';

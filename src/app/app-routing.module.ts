@@ -32,7 +32,7 @@ const routes: Routes = [
           },
           {
             path: 'policies/cookies',
-            component: fromPolicy.ApCookiePolicyComponent
+            component: fromPolicy.ApCookiePolicyComponent,
           },
           {
             path: 'policies/privacy',
@@ -40,7 +40,7 @@ const routes: Routes = [
           },
           {
             path: 'policies/service-terms',
-            component: fromPolicy.ApServiceTermsPolicyComponent
+            component: fromPolicy.ApServiceTermsPolicyComponent,
           },
           // {
           //   path: 'posts',
