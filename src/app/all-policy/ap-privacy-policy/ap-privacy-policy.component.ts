@@ -17,10 +17,8 @@ export class ApPrivacyPolicyComponent {
   public mainAddress1Privacy: string ='4217 Rd 19';
   public mainAddress2Privacy: string ='Continental, OH, 45831';
 
-  public activeRoutePrivacy: string = '';
-  public routerEventsPrivacy: any;
-  public idArrayPrivacy: string[] = ["policyPrivacy", "definitionsPrivacy", "protectionPrivacy", "userDataPrivacy", "companyPrivacy", "companyUsePrivacy", "WhoPrivacy", "protocolsPrivacy", "childrenPrivacy", "contactPrivacy", "CaliforniaUserPrivacy", "EuropeanUserPrivacy", "modificationPrivacy", "disclosuresPrivacy", "datePrivacy"];
-
+  public idArrayPrivacy: string[] = ["definitionsPrivacy", "protectionPrivacy", "userDataPrivacy", "companyPrivacy", "companyUsePrivacy", "WhoPrivacy", "protocolsPrivacy", "childrenPrivacy", "contactPrivacy", "CaliforniaUserPrivacy", "EuropeanUserPrivacy", "modificationPrivacy", "disclosuresPrivacy", "datePrivacy"];
+  public idArrayCaliforniaPrivacy: string[] = ["policyCaliforniaPrivacy", "linksCaliforniaPrivacy", "definitionsCaliforniaPrivacy", "userDataCaliforniaPrivacy", "companyDataCaliforniaPrivacy", "sharingDataCaliforniaPrivacy", "userRightsCaliforniaPrivacy", "otherRightsCaliforniaPrivacy", "modificationCaliforniaPrivacy", "contactCaliforniaPrivacy", "cookieCaliforniaPrivacy"];
   constructor() {};
 
   public toPrivacy(navClick: Event, id: string): void {
