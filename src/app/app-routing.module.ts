@@ -47,28 +47,28 @@ const routes: Routes = [
           //   component: fromPost.PostListComponent
           // },
           // {
+          //   path: 'services',
+          //   component: fromServices.AllServicesListComponent
+          // },
+          // {
+          //   path: 'service/details/:id',
+          //   component: fromServices.AllServicesDetailComponent
+          // },
+          // {
+          //   path: 'our-work-and-reviews',
+          //   component: fromServices.WorkReviewsListComponent
+          // },
+          // {
+          //   path: 'our-work/details/:id',
+          //   component: fromServices.WorkReviewsDetailComponent
+          // },
+          // {
           //   path: 'reviews',
-          //   component: fromReview.TestimonialListComponent
+          //   component: fromReview.ReviewsListComponent
           // },
           // {
-          //   path: 'investigations',
-          //   component: fromServices.InvestigationListComponent
-          // },
-          // {
-          //   path: 'investigation/details/:id',
-          //   component: fromServices.InvestigationDetailComponent
-          // },
-          // {
-          //   path: 'security-surveillance',
-          //   component: fromServices.SecuritySurveillanceListComponent
-          // },
-          // {
-          //   path: 'security/details/:id',
-          //   component: fromServices.SecuritySurveillanceDetailComponent
-          // },
-          // {
-          //   path: 'surveillance/details/:id',
-          //   component: fromServices.SecuritySurveillanceDetailComponent
+          //   path: 'reviews/details/:id',
+          //   component: fromReview.ReviewsDetailComponent
           // },
         ]
       }
