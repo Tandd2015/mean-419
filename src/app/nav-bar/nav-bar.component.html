@@ -51,9 +51,9 @@
   </ul>
   <div class="navBarMenuContainer">
     <div id="mobileMenu" (click)="mobileMenu($event, actOne)" [ngClass]="[actOne ? 'navBarToggle is-active': 'navBarToggle']">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+      <span [ngClass]="[actOne ? 'bar active' : 'bar']"></span>
+      <span [ngClass]="[actOne ? 'bar active' : 'bar']"></span>
+      <span [ngClass]="[actOne ? 'bar active' : 'bar']"></span>
     </div>
     <ul [ngClass]="[actOne ? 'navBarMenu active': 'navBarMenu']">
       <li class="navBarItem">

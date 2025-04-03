@@ -1,5 +1,38 @@
-/* Set the size of the div element that contains the map */
 #map {
-  height: 400px; /* The height is 400 pixels */
-  width: 100%; /* The width is the width of the web page */
+  height: 400px;
+  width: 100%;
 }
+
+.navBarContainer {
+  background: #e56a05;
+  background: linear-gradient(146deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  background-size: cover;
+  position: fixed;
+  overflow: hidden;
+}
+
+
+@media screen and (max-width: 650px) {
+  .navBarContainer {
+    height: 5rem;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .navBarContainer {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    z-index: 2;
+  }
+
+  .navBarContainer.first-active{
+    height: 9rem;
+  }
+}
+

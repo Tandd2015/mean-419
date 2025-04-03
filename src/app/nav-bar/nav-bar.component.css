@@ -7,7 +7,7 @@
 }
 
 #navBarLogo {
-  background-color: #001da4;
+  background-color: #000000;
   background-size: 100%;
   border-radius: 1rem;
   display: flex;
@@ -97,7 +97,7 @@ li:hover .basicG {
   position: absolute;
   width: 100%;
   height: 0.2rem;
-  background-color: #b7c6e8;
+  background-color: #de701d;
   left: 0;
   transform: scaleX(0);
   transition: all .5s ease;
@@ -105,7 +105,7 @@ li:hover .basicG {
 
 .navBarMenuContainer .navBarMenu .navBarItem .navBarLinks:hover,
 .navBarMenuContainer .navBarMenu .navBarItem .navBarLinks:focus {
-  color: #b7c6e8;
+  color: #de701d;
   transition: all .5s ease;
 }
 
@@ -125,7 +125,7 @@ li:hover .basicG {
 }
 
 .navBarLinks {
-  color: #fff;
+  color: beige;
   transition: all .5s ease;
   display: flex;
   align-items: center;
@@ -147,11 +147,16 @@ li:hover .basicG {
 .headerBarItem {
   width: max-content;
   height: 1.6rem;
-  color: #fff;
+  color: white;
 }
 
 .headerBarLinks {
-  color: #b7c6e8;
+  color: black;
+}
+
+.headerBarLinks:hover, .headerBarLinks:focus {
+  color: white;
+  transition: all .5s ease;
 }
 
 @keyframes slideIn {
@@ -319,7 +324,7 @@ li:hover .basicG {
     margin: 0;
     position: absolute;
     top: -1000px;
-    background: #0d81fd;
+    background: linear-gradient(146deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
     opacity: 1;
     transition: all 0.5s ease-in-out;
     z-index: -1;
@@ -327,7 +332,7 @@ li:hover .basicG {
   }
 
   .navBarMenuContainer .navBarMenu.active {
-    background: #0d81fd;
+    background: linear-gradient(146deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
     width: 56%;
     top: 0;
     opacity: 1;
@@ -344,9 +349,24 @@ li:hover .basicG {
     height: 0.2rem;
     margin: 5px auto;
     transition: all 0.3s ease-in-out;
-    background-color: #fff;
+    background-color: white;
     display: block;
     cursor: pointer;
+  }
+
+  .navBarMenuContainer #mobileMenu:hover .bar, .navBarMenuContainer #mobileMenu:focus .bar {
+    background-color: #e56a05;
+    transition: all .5s ease;
+  }
+
+  .navBarMenuContainer .navBarToggle .bar.active {
+    background-color: #e56a05;
+    transition: all .5s ease;
+  }
+
+  .navBarMenuContainer #mobileMenu:hover .bar.active, .navBarMenuContainer #mobileMenu:focus .bar.active {
+    background-color: white;
+    transition: all .5s ease;
   }
 
   .navBarMenuContainer #mobileMenu {

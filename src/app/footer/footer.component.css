@@ -1,12 +1,9 @@
-/* svg {
-  margin: 0rem 0.25rem 0rem 0.25rem;
-} */
 div.contactEndHolder {
-  background: linear-gradient(to bottom,#434343 0%,rgb(0,0,0) 50%);
+  background: linear-gradient(327deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
 }
 
 div#contactEndHolderCell {
-  background: linear-gradient(to top,#434343 0%,rgb(0,0,0) 50%);
+  background: linear-gradient(327deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
   margin-bottom: 0.2rem;
   display: none;
 }
@@ -15,6 +12,7 @@ div.svgHolder, a.svgHolder {
   display: inline-flex;
   width: 5rem;
   margin: 0rem 0.25rem 0rem 0.25rem;
+  border-radius: 0.5rem;
 }
 
 div.parentSvgHolder {
@@ -26,12 +24,31 @@ div.svgHolderPH {
   display: inline-flex;
   width: 7rem;
   margin: 0rem 0.25rem 0rem 0.25rem;
+  border-radius: 0.5rem;
 }
 
 svg {
   width: 100%;
   height: auto;
-  filter: invert(1);
+  fill: #211f20;
+}
+
+a.svgHolder svg:first-child {
+  fill: silver;
+}
+
+div.svgHolderPH:hover, div.svgHolderPH:focus  {
+  background: linear-gradient(327deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
+  transition: all .5s ease;
+}
+
+a.svgHolder:hover, a.svgHolder:focus  {
+  background: linear-gradient(146deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
+  transition: all .5s ease;
+}
+
+div.svgHolderPH:hover svg, div.svgHolderPH:focus svg, a.svgHolder:hover svg, a.svgHolder:focus svg {
+  fill: white;
 }
 
 p.contactSectionTitle {
@@ -59,6 +76,17 @@ ul.pageEndNav li p.pageEndNavDivider {
   margin: 0rem 1rem 0rem 1rem;
 }
 
+ul.pageEndNav li a.pageEndNavLinks {
+  color: #FF3403;
+  border-radius: 0.15rem;
+}
+
+ul.pageEndNav li a.pageEndNavLinks:hover, ul.pageEndNav li a.pageEndNavLinks:focus {
+  background: linear-gradient(327deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
+  color: white;
+  transition: all .5s ease;
+}
+
 div.contactAcceptFollow {
   text-align: center;
   padding: 0.5rem 3.5% 0.5rem 0rem;
@@ -74,14 +102,6 @@ div.contactSectionTitlePrecursor {
   position: relative;
   right: 20%;
 }
-
-/* div#contactEndHolderCell div.contactAcceptFollow div.contactEndHolderCAFC {
-  margin: 0.5rem 0rem;
-} */
-
-/* div#contactEndHolderCell div.contactAcceptFollow div.contactEndHolderCAFR {
-  margin: 0.5rem 0rem;
-} */
 
 @media only screen and (min-width: 5566px) {
   div.contactSectionTitlePrecursor {
@@ -188,9 +208,6 @@ div.contactSectionTitlePrecursor {
 }
 
 @media only screen and (max-width: 847px) {
-  /* div.parentSvgHolder {
-    margin-top: 1.5rem;
-  } */
   div.contactSectionTitlePrecursor {
     right: 28%;
   }
@@ -247,12 +264,6 @@ div.contactSectionTitlePrecursor {
   div.contactEndHolder div.contactAcceptFollow div.contactWeExcept {
     padding-right: 1.1rem;
   }
-  /* div.contactEndHolder div.contactAcceptFollow div.contactEndHolderCAFR p.contactSectionTitle {
-    display: flex;
-  }
-  div.contactEndHolder div.contactAcceptFollow div.contactEndHolderCAFR a.svgHolder {
-    margin-left: 0.75rem;
-  } */
   div.contactEndHolder div.contactAcceptFollow div.contactEndHolderCAFR {
     display: flex;
     flex-direction: column;
@@ -263,13 +274,13 @@ div.contactSectionTitlePrecursor {
 @media only screen and (max-width: 481px) {
   div#contactEndHolderCell {
     display: grid;
-    /* width: 106%; */
   }
-
+  div#contactEndHolder {
+    background: linear-gradient(146deg, rgba(229, 106, 5, 1.0),  rgba(242, 148, 77, 1.0), #211f20, #211f20);
+  }
   p.contactCopyright {
     width: 98%;
   }
-
   div.contactEndHolderCellTwo {
     display: grid;
     width: 105%;
@@ -277,7 +288,6 @@ div.contactSectionTitlePrecursor {
   div.contactEndHolderTwo {
     width: 109%;
   }
-
   div.parentSvgHolder {
     margin-top: 0rem;
     justify-content: center;
@@ -322,12 +332,4 @@ div.contactSectionTitlePrecursor {
   div.svgHolderPH {
     width: 3.5rem;
   }
-
-
-  /* div#contactEndHolder {
-    width: 110%;
-    padding-left: 1rem;
-  } */
 }
-/*
-background: linear-gradient(to bottom, white 50%, #262626 51%, #262626 91%, black 92%); */
